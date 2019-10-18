@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,8 +21,24 @@ public class MainActivity extends AppCompatActivity {
         rightButton = (Button) findViewById(R.id.rightButton);
 
         randomNumbers();
-
-
+        leftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(leftValue > rightValue){
+                    Toast.makeText(getApplicationContext(),"Congratulations", Toast.LENGTH_SHORT).show();
+                }
+                randomNumbers();
+            }
+        });
+        rightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(rightValue > leftValue){
+                    Toast.makeText(getApplicationContext(),"Congratulations", Toast.LENGTH_SHORT).show();
+                }
+                randomNumbers();
+            }
+        });
     }
     public void randomNumbers(){
         leftValue = r.nextInt(100);
